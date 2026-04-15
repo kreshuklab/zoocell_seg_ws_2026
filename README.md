@@ -1,5 +1,5 @@
 # <span style="color: purple;">**ZooCell Segmentation Workshop 2026:**</span>
-# A Step-by-Step Pipeline for 3D Segmentation & Transfer Learning
+## A Step-by-Step Pipeline for 3D Segmentation & Transfer Learning
 
 This notebook provides a (hopefully) comprehensive tutorial on processing volumetric electron microscopy (EM) data for cell segmentation using deep learning.
 
