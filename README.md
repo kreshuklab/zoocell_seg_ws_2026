@@ -27,7 +27,9 @@ Specifically, this notebook will guide you through:
 
 - **Package models** according to BioImage.IO standards
 
-## Download Instructions: [Make sure you are in the directory you want to download this repository to]
+## Download Instructions:
+
+***Note - Make sure you are in the directory you want to download this repository to...
 
 **Clone this repository to your machine**:
 ```
