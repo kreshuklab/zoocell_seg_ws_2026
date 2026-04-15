@@ -26,3 +26,17 @@ Specifically, this notebook will guide you through:
 - Evaluate segmentation quality and export results
 
 - **Package models** according to BioImage.IO standards
+
+## Resources:
+
+- **BioImage.IO**: https://bioimage.io/ - Model zoo and specifications
+- **ELF**: https://github.com/constantinpape/elf - Segmentation algorithms
+- **PyTorch**: https://pytorch.org/ - Deep learning framework
+- **BioIO**: https://github.com/bioio-devs/bioio - Modern bioimage I/O
+- **CebraNet**: - available in the Bioimage Model Zoo (bioimage.io) // ([CebraNET @bioimage.io](https://bioimage.io/#/artifacts/joyful-deer), [CebraNET @zenodo](https://zenodo.org/record/7274276))
+
+Remember: The field of bioimage analysis is rapidly evolving. Stay updated with the latest models and techniques from the BioImage.IO community!
+
+---
+
+*This notebook was created for educational purposes. For production use, consider additional validation, error handling, and performance optimization.*
