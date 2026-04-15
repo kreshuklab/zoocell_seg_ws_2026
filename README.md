@@ -27,6 +27,23 @@ Specifically, this notebook will guide you through:
 
 - **Package models** according to BioImage.IO standards
 
+## Download Instructions: [Make sure you are in the directory you want to download this repository to]
+
+**Clone this repository to your machine**:
+```
+git --clone https://github.com/kreshuklab/zoocell_seg_ws_2026.git
+```
+
+**Move into the repository directory**
+```
+cd ./zoocell_seg_ws_2026
+```
+
+**Set up the environment we will use for this pipeline/workflow**
+```
+conda env create --file environment.yml
+```
+
 ## Resources:
 
 - **BioImage.IO**: https://bioimage.io/ - Model zoo and specifications
