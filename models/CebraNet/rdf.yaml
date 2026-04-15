@@ -1,0 +1,142 @@
+type: model
+format_version: 0.5.3
+name: CebraNET Cellular Membranes
+timestamp: '2023-10-27T11:34:30.252675'
+id: joyful-deer
+id_emoji: 🦌
+description: Cellular membrane prediction model for volume SEM datasets
+authors:
+  - affiliation: EMBL Heidelberg
+    github_user: jhennies
+    name: Julian Hennies
+    orcid: 0000-0002-0555-151X
+cite:
+  - doi: 10.1101/2023.04.06.535829
+    text: 'Hennies et al. 2023, CebraEM: A practical workflow to segment cellular organelles in volume SEM datasets using a transferable CNN-based membrane prediction'
+documentation: CebraNET_README.md
+tags:
+  - unet
+  - 3d
+  - cells
+  - whole-organism
+  - ilastik
+  - semantic-segmentation
+  - electron-microscopy
+  - pytorch
+  - membranes
+  - hela
+  - macrophage
+  - platynereis
+  - calu-3
+license: MIT
+covers:
+  - coverimage.jpg
+
+inputs:
+  - id: input0
+    data:
+      type: uint8
+    axes:
+      - type: batch
+        id: b
+      - type: channel
+        id: c
+        channel_names: [channel0]
+      - type: space
+        id: z
+        size:
+          min: 128
+          step: 16
+      - type: space
+        id: y
+        size:
+          min: 128
+          step: 16
+      - type: space
+        id: x
+        size:
+          min: 128
+          step: 16
+    preprocessing:
+      - id: ensure_dtype
+        kwargs:
+          dtype: float32
+      #- id: scale_linear
+      # kwargs:
+      #    gain: -1
+      #    offset: 1.0
+      - id: scale_range
+        kwargs:
+          axes: [c, z, y, x]
+      - id: ensure_dtype
+        kwargs:
+          dtype: float32 
+    test_tensor:
+      source: test_input.npy
+
+outputs:
+  - id: output0
+    data:
+      type: float32
+    axes:
+      - type: batch
+        id: b
+      - type: channel
+        id: c
+        channel_names: [channel0]
+      - type: space
+        id: z
+        size:
+          tensor_id: input0
+          axis_id: z
+        halo: 32
+      - type: space
+        id: y
+        size:
+          tensor_id: input0
+          axis_id: y
+        halo: 32
+      - type: space
+        id: x
+        size:
+          tensor_id: input0
+          axis_id: x
+        halo: 32
+    test_tensor:
+      source: test_output.npy
+
+weights:
+  pytorch_state_dict:
+    architecture:
+      source: piled_unets.py
+      callable: PiledUnet
+      sha256: 023d215175db693f8091d5d6895c783e79383638ed9a50f57c76b13ce1ca0e59
+      kwargs:
+        n_nets: 3
+        in_channels: 1
+        out_channels: [1, 1, 1]
+        filter_sizes_down:
+          - [[8, 16], [16, 32], [32, 64]]
+          - [[8, 16], [16, 32], [32, 64]]
+          - [[8, 16], [16, 32], [32, 64]]
+        filter_sizes_bottleneck:
+          - [64, 128]
+          - [64, 128]
+          - [64, 128]
+        filter_sizes_up:
+          - [[64, 64], [32, 32], [16, 16]]
+          - [[64, 64], [32, 32], [16, 16]]
+          - [[64, 64], [32, 32], [16, 16]]
+        batch_norm: true
+        output_activation: sigmoid
+        predict: true
+    dependencies:
+      source: conda.yaml
+    pytorch_version: 1.13.0
+    source: model_0097.pt
+
+  torchscript:
+    source: weights_cpu.torchscript
+    parent: pytorch_state_dict
+    pytorch_version: 1.13.1
+    sha256: 5ca014eddf430a71b52240d149f4ee3cb06498d09093c47c36898171145a5eee

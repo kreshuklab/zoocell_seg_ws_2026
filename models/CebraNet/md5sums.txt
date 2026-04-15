@@ -1,0 +1,11 @@
+e806ace0eee613cbaf5dbc84d3f668d3  coverimage.jpg
+55da9646e8ebfc0d6e53903b4919d83b  sample_output_0.tif
+a5c91d941ac93ebe8740c1fc0cbeb13e  weights.torchscript
+11702103e290519ff50024a20383908d  test_data_raw.npy
+797285fa2c90f46ef435f1ecee78f260  test_data_out.npy
+4ca42b9de384f4cc0183140f88c0f47b  scale_linear.ijm
+c513afa1e53f84ceaf6031c9984345bf  sample_input_0.tif
+841f33f9908d7c301ca3212f92563fad  rdf.yaml
+a3970b53b7db738bcd97e6b8273765c5  piled_unets.py
+b79e1ae21f7055ffc0a694f44e8c1ea1  model_0097.pt
+a615d641dc7cdf55bf547e4f8265f41c  CebraNET_README.md
