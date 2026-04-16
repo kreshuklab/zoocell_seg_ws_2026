@@ -22,11 +22,6 @@ import torchvision.transforms as transforms
 import bioimageio.core
 from bioimageio.core import load_description
 
-# Segmentation algorithms
-import elf.segmentation.watershed as ws
-import elf.segmentation.features as feats
-import elf.segmentation.multicut as mc
-
 # Data Loading Utilities
 
 def load_volumetric_data(file_path, time_idx=0, channel_idx=0, out_axes='ZYX', internal_path=None, 
@@ -881,6 +876,10 @@ def apply_watershed_segmentation(boundary_prediction, threshold=0.5, sigma_seeds
     Returns:
     - segmentation: Labeled segmentation
     """
+    # Segmentation algorithms
+    import elf.segmentation.watershed as ws
+    import elf.segmentation.features as feats
+    import elf.segmentation.multicut as mc
     print("Applying watershed segmentation...")
 
     watershed_result = ws.distance_transform_watershed(
@@ -913,6 +912,10 @@ def apply_multicut_segmentation(boundary_prediction, beta=0.5, threshold=0.5, si
     Returns:
     - segmentation: Labeled segmentation
     """
+    # Segmentation algorithms
+    import elf.segmentation.watershed as ws
+    import elf.segmentation.features as feats
+    import elf.segmentation.multicut as mc
     print("Applying multicut segmentation...")
 
     # Create supervoxels (oversegmentation)
