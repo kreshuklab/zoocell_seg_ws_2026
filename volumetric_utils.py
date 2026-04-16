@@ -852,17 +852,11 @@ def visualize_model_comparison(volume, original_prediction, finetuned_prediction
     axes[1,2].imshow(finetuned_prediction[slice_idx], cmap='viridis', alpha=0.5, vmin=0, vmax=1)
     axes[1,2].set_title("Fine-tuned Model Overlay")
 
-    # Add colorbars
-    for i in range(2):
-        for j in range(1, 3):
-            plt.colorbar(axes[i, j].images[1], ax=axes[i, j], fraction=0.046, pad=0.04)
-
     plt.tight_layout()
     plt.show()
     
-    
-# Instance Segmentation
 
+# Instance Segmentation
 def apply_watershed_segmentation(boundary_prediction, threshold=0.5, sigma_seeds=2.0, min_size=50):
     """
     Apply watershed segmentation to boundary predictions.
@@ -1041,6 +1035,7 @@ def save_model_for_bioimageio(
     including correct tracing and preprocessing specifications.
     """
     
+    from pathlib import Path
     # Default architecture kwargs to match your CebraNet specifications
     if architecture_kwargs is None:
         architecture_kwargs = {

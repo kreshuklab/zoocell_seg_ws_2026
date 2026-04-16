@@ -1,0 +1,1 @@
+{"dataType":"float32","compression":{"type":"raw"},"blockSize":[64,64,64],"dimensions":[400,400,400],"downsamplingFactors":[1,1,1]}
